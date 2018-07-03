@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 4
+  - 6
 install:
-  - yarn install --prod
-script: yarn lint && yarn build
+  - npm install --prod
+script: npm lint && npm build
