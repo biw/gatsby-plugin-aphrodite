@@ -1,0 +1,32 @@
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+.DS_Store
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+node_modules/
+.npm
+
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+dist/
+
+gatsby-browser.js
+gatsby-ssr.js

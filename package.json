@@ -1,0 +1,61 @@
+{
+  "name": "gatsby-plugin-aphrodite",
+  "description": "Gatsby plugin to add support for Aphrodite",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "glamor"
+  ],
+  "repository": "https://github.com/biw/gatsby-aphrodite-plugin",
+  "homepage": "https://github.com/biw/gatsby-aphrodite-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/biw/gatsby-aphrodite-plugin/issues"
+  },
+  "version": "1.0.9",
+  "author": "Ben Williams <ben@719ben.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "peerDependencies": {
+    "aphrodite": "^2.20.29",
+    "gatsby": "^1.9.273"
+  },
+  "scripts": {
+    "build": "babel src --out-dir . --ignore **/__tests__",
+    "prepare": "cross-env NODE_ENV=production npm run build",
+    "watch": "babel -w src --out-dir . --ignore **/__tests__",
+    "precommit": "lint-staged",
+    "raw-lint": "./node_modules/.bin/eslint",
+    "raw-prettier": "./node_modules/.bin/prettier-eslint --eslint-config-path \".eslintrc.json\"",
+    "lint": "yarn raw-prettier --write \"src/**/*.js\" && yarn raw-lint \"src/**/*.js\"",
+    "reinstall": "rm -rf node_modules && yarn cache clean && yarn"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn raw-prettier",
+      "yarn raw-lint",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@babel/runtime": "7.0.0-beta.51",
+    "lint-staged": "^7.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0-beta.51",
+    "@babel/core": "7.0.0-beta.51",
+    "@babel/node": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "babel-eslint": "8.2.5",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "cross-env": "^5.1.4",
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.10.0",
+    "husky": "^0.14.3",
+    "prettier-eslint-cli": "^4.7.1"
+  }
+}
