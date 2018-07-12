@@ -3,13 +3,13 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "entry",
+        "useBuiltIns": "usage",
         "shippedProposals": true,
         "modules": "commonjs",
         "targets": {
-          "node": 6
+          "node": 4
         }
-      },
+      }
     ]
   ],
   "plugins": ["transform-react-jsx"]
