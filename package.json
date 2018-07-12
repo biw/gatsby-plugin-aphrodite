@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/biw/gatsby-aphrodite-plugin/issues"
   },
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Ben Williams <ben@719ben.com>",
   "license": "MIT",
   "main": "index.js",
