@@ -6,10 +6,10 @@
     "gatsby-plugin",
     "aphrodite"
   ],
-  "repository": "https://github.com/biw/gatsby-aphrodite-plugin",
-  "homepage": "https://github.com/biw/gatsby-aphrodite-plugin#readme",
+  "repository": "https://github.com/biw/gatsby-plugin-aphrodite",
+  "homepage": "https://github.com/biw/gatsby-plugin-aphrodite#readme",
   "bugs": {
-    "url": "https://github.com/biw/gatsby-aphrodite-plugin/issues"
+    "url": "https://github.com/biw/gatsby-plugin-aphrodite/issues"
   },
   "version": "2.0.2",
   "author": "Ben Williams <ben@719ben.com>",
