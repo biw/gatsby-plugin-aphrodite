@@ -4,7 +4,7 @@
   "keywords": [
     "gatsby",
     "gatsby-plugin",
-    "glamor"
+    "aphrodite"
   ],
   "repository": "https://github.com/biw/gatsby-aphrodite-plugin",
   "homepage": "https://github.com/biw/gatsby-aphrodite-plugin#readme",
