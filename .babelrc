@@ -7,7 +7,7 @@
         "shippedProposals": true,
         "modules": "commonjs",
         "targets": {
-          "node": 4
+          "node": 6
         }
       },
     ]

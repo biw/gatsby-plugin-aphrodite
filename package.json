@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/biw/gatsby-aphrodite-plugin/issues"
   },
-  "version": "1.0.9",
+  "version": "2.0.0",
   "author": "Ben Williams <ben@719ben.com>",
   "license": "MIT",
   "main": "index.js",
@@ -21,11 +21,12 @@
   },
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
-    "prepare": "cross-env NODE_ENV=production npm run build",
+    "prepare": "cross-env NODE_ENV=production yarn run build",
     "watch": "babel -w src --out-dir . --ignore **/__tests__",
+    "test": "echo 'no tests'",
     "raw-lint": "./node_modules/.bin/eslint",
     "raw-prettier": "./node_modules/.bin/prettier-eslint --eslint-config-path \".eslintrc.json\"",
-    "lint": "npm raw-prettier --write \"src/**/*.js\" && npm raw-lint \"src/**/*.js\"",
+    "lint": "yarn raw-prettier --write \"src/**/*.js\" && yarn raw-lint \"src/**/*.js\"",
     "reinstall": "rm -rf node_modules && yarn cache clean && yarn"
   },
   "dependencies": {
