@@ -23,22 +23,26 @@ npm install --save aphrodite gatsby-plugin-aphrodite
 
 Add the plugin to the plugins array in your `gatsby-config.js`:
 
-
 ```js
 //gatsby-config.js
 
-plugins: [`gatsby-plugin-aphrodite`]
+plugins: ['gatsby-plugin-aphrodite']
 ```
 
 then use `aphrodite` in your component files:
 
-
 ```js
 // SomeComponent.js
 
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite'
 
-const styles = StyleSheet.create({ x: { color: 'red' }})
+const styles = StyleSheet.create({ message: { color: 'red' } })
+
+const SomeComponent = () => (
+  <div className={css(styles.message)}>Hello World</div>
+)
+
+export default SomeComponent
 ```
 
 ## LICENSE
@@ -51,5 +55,5 @@ MIT © [Ben Williams](https://719ben.com)
 [package]: https://www.npmjs.com/package/gatsby-plugin-aphrodite
 [license-badge]: https://img.shields.io/npm/l/gatsby-plugin-aphrodite.svg?style=flat-square
 [license]: https://github.com/biw/gatsby-plugin-aphrodite/blob/master/LICENSE
-[twitter-badge]: https://img.shields.io/twitter/follow/719ben.svg?style=flat-square&logo=twitter&label=Follow
-[twitter]: https://twitter.com/719ben
+[twitter-badge]: https://img.shields.io/twitter/follow/biwills.svg?style=flat-square&logo=twitter&label=Follow
+[twitter]: https://twitter.com/biwills
