@@ -27,7 +27,8 @@
     "raw-lint": "./node_modules/.bin/eslint",
     "raw-prettier": "./node_modules/.bin/prettier-eslint --eslint-config-path \".eslintrc.json\"",
     "lint": "yarn raw-prettier --write \"src/**/*.js\" && yarn raw-lint \"src/**/*.js\"",
-    "reinstall": "rm -rf node_modules && yarn cache clean && yarn"
+    "reinstall": "rm -rf node_modules && yarn cache clean && yarn",
+    "release": "np"
   },
   "dependencies": {
     "@babel/runtime": "7.1.5"
@@ -47,6 +48,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.11.1",
+    "np": "^7.5.0",
     "prettier-eslint-cli": "^4.7.1"
   }
 }
