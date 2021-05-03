@@ -49,7 +49,7 @@ export default SomeComponent
 
 MIT © [Ben Williams](https://719ben.com)
 
-[build-badge]: https://img.shields.io/travis/biw/gatsby-plugin-aphrodite.svg?style=flat-square
+[build-badge]: https://img.shields.io/circleci/build/github/biw/gatsby-plugin-aphrodite.svg?style=flat-square
 [build]: https://travis-ci.org/biw/gatsby-plugin-aphrodite
 [version-badge]: https://img.shields.io/npm/v/gatsby-plugin-aphrodite.svg?style=flat-square
 [package]: https://www.npmjs.com/package/gatsby-plugin-aphrodite
