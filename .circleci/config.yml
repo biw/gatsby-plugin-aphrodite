@@ -26,7 +26,7 @@ commands:
     build-gatsby-1:
         steps:
             - restore_cache:
-                  name: restore cache ➡ root
+                  name: restore cache ➡ gatsby 1
                   keys:
                       - dependencies-linux-root-{{ checksum "yarn.lock" }}
                       # fallback to using the latest cache if no exact match is found
@@ -38,14 +38,14 @@ commands:
                   name: Build Gatsby 1.x.x
                   command: cd ~/project/test-installs/gatsby1 && yarn build
             - save_cache:
-                  name: save cache
+                  name: save cache ➡ gatsby 1
                   key: dependencies-linux-root-{{ checksum "yarn.lock" }}
                   paths:
                       - ~/.cache/yarn
     build-gatsby-2:
         steps:
             - restore_cache:
-                  name: restore cache ➡ root
+                  name: restore cache ➡ gatsby 2
                   keys:
                       - dependencies-linux-root-{{ checksum "yarn.lock" }}
                       # fallback to using the latest cache if no exact match is found
@@ -57,14 +57,14 @@ commands:
                 name: Build Gatsby 2.x.x
                 command: cd ~/project/test-installs/gatsby2 && yarn build
             - save_cache:
-                  name: save cache
+                  name: save cache ➡ gatsby 2
                   key: dependencies-linux-root-{{ checksum "yarn.lock" }}
                   paths:
                       - ~/.cache/yarn
     build-gatsby-3:
         steps:
             - restore_cache:
-                  name: restore cache ➡ root
+                  name: restore cache ➡ gatsby 3
                   keys:
                       - dependencies-linux-root-{{ checksum "yarn.lock" }}
                       # fallback to using the latest cache if no exact match is found
@@ -76,7 +76,7 @@ commands:
                 name: Build Gatsby 3.x.x
                 command: cd ~/project/test-installs/gatsby3 && yarn build
             - save_cache:
-                  name: save cache
+                  name: save cache ➡ gatsby 3
                   key: dependencies-linux-root-{{ checksum "yarn.lock" }}
                   paths:
                       - ~/.cache/yarn
