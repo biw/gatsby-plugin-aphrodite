@@ -18,14 +18,81 @@ commands:
                   key: dependencies-linux-root-{{ checksum "yarn.lock" }}
                   paths:
                       - ~/.cache/yarn
+    build-plugin:
+        steps:
+            - run:
+                  name: yarn build
+                  command: cd ~/project && yarn build
+    build-gatsby-1:
+        steps:
+            - restore_cache:
+                  name: restore cache ➡ root
+                  keys:
+                      - dependencies-linux-root-{{ checksum "yarn.lock" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - dependencies-linux-root-
+            - run:
+                  name: Install Gatsby 1.x.x
+                  command: cd ~/project/test-installs/gatsby1 && yarn --frozen-lockfile --cache-folder ~/.cache/yarn
+            - run:
+                  name: Build Gatsby 1.x.x
+                  command: cd ~/project/test-installs/gatsby1 && yarn build
+            - save_cache:
+                  name: save cache
+                  key: dependencies-linux-root-{{ checksum "yarn.lock" }}
+                  paths:
+                      - ~/.cache/yarn
+    build-gatsby-2:
+        steps:
+            - restore_cache:
+                  name: restore cache ➡ root
+                  keys:
+                      - dependencies-linux-root-{{ checksum "yarn.lock" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - dependencies-linux-root-
+            - run:
+                name: Install Gatsby 2.x.x
+                command: cd ~/project/test-installs/gatsby2 && yarn --frozen-lockfile --cache-folder ~/.cache/yarn
+            - run:
+                name: Build Gatsby 2.x.x
+                command: cd ~/project/test-installs/gatsby2 && yarn build
+            - save_cache:
+                  name: save cache
+                  key: dependencies-linux-root-{{ checksum "yarn.lock" }}
+                  paths:
+                      - ~/.cache/yarn
+    build-gatsby-3:
+        steps:
+            - restore_cache:
+                  name: restore cache ➡ root
+                  keys:
+                      - dependencies-linux-root-{{ checksum "yarn.lock" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - dependencies-linux-root-
+            - run:
+                name: Install Gatsby 3.x.x
+                command: cd ~/project/test-installs/gatsby3 && yarn --frozen-lockfile --cache-folder ~/.cache/yarn
+            - run:
+                name: Build Gatsby 3.x.x
+                command: cd ~/project/test-installs/gatsby3 && yarn build
+            - save_cache:
+                  name: save cache
+                  key: dependencies-linux-root-{{ checksum "yarn.lock" }}
+                  paths:
+                      - ~/.cache/yarn
+
     run_all_tests:
         steps:
             - run:
                   name: yarn test
                   command: yarn test:ci
+            - build-gatsby-1
+            - build-gatsby-2
+            - build-gatsby-3
     install_and_test:
         steps:
             - install_and_cache_yarn_linux
+            - build-plugin
             - run_all_tests
 
 # based on https://github.com/nodejs/Release schedule

@@ -1,0 +1,17 @@
+{
+  "name": "aphrodite-test-gatsby",
+  "private": true,
+  "version": "0.1.0",
+  "dependencies": {
+    "aphrodite": "^2.4.0",
+    "gatsby": "^1.9.273",
+    "gatsby-plugin-aphrodite": "file:../../",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "gatsby develop"
+  }
+}
