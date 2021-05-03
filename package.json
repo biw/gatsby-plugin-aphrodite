@@ -24,6 +24,7 @@
     "prepare": "cross-env NODE_ENV=production yarn run build",
     "watch": "babel -w src --out-dir . --ignore **/__tests__",
     "test": "echo 'no tests'",
+    "test:ci": "CI=true yarn test",
     "raw-lint": "./node_modules/.bin/eslint",
     "raw-prettier": "./node_modules/.bin/prettier-eslint --eslint-config-path \".eslintrc.json\"",
     "lint": "yarn raw-prettier --write \"src/**/*.js\" && yarn raw-lint \"src/**/*.js\"",
