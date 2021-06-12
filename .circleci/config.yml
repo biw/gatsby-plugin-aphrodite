@@ -11,6 +11,7 @@ commands:
                   pkg-manager: yarn
                   include-branch-in-cache-key: false
             - run: rm /tmp/node-project-package.json
+            - run: rm /tmp/node-project-lockfile
     build-plugin:
         steps:
             - run: yarn build
