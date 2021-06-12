@@ -10,16 +10,13 @@ commands:
             - node/install-packages:
                   pkg-manager: yarn
                   include-branch-in-cache-key: false
+            - run: rm /tmp/node-project-package.json
     build-plugin:
         steps:
-            - run:
-                  name: yarn build
-                  command: cd ~/project && yarn build
+            - run: yarn build
     run-plugin-tests:
         steps:
-            - run:
-                  name: yarn tests
-                  command: yarn test:ci
+            - run: yarn test:ci
     build-gatsby-1:
         steps:
             - node/install-packages:
