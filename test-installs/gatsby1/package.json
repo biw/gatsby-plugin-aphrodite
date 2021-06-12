@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
+    "@babel/core": "^7.14.0",
     "aphrodite": "^2.4.0",
     "gatsby": "^1.9.273",
     "gatsby-plugin-aphrodite": "file:../../",
