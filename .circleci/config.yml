@@ -204,23 +204,63 @@ workflows:
     main:
         jobs:
             - Linting
-            - Node v10 Plugin Tests
-            - Node v10 Gatsby 1
-            - Node v10 Gatsby 2
-            - Node v10 Gatsby 3
-            - Node v12 Plugin Tests
-            - Node v12 Gatsby 1
-            - Node v12 Gatsby 2
-            - Node v12 Gatsby 3
-            - Node v14 Plugin Tests
-            - Node v14 Gatsby 1
-            - Node v14 Gatsby 2
-            - Node v14 Gatsby 3
-            - Node v14_16 Plugin Tests
-            - Node v14_16 Gatsby 1
-            - Node v14_16 Gatsby 2
-            - Node v14_16 Gatsby 3
-            - Node v15 Plugin Tests
-            - Node v15 Gatsby 1
-            - Node v15 Gatsby 2
-            - Node v15 Gatsby 3
+            - Node v10 Plugin Tests:
+                requires:
+                    - Linting
+            - Node v10 Gatsby 1:
+                requires:
+                    - Node v10 Plugin Tests
+            - Node v10 Gatsby 2:
+                requires:
+                    - Node v10 Plugin Tests
+            - Node v10 Gatsby 3:
+                requires:
+                    - Node v10 Plugin Tests
+            - Node v12 Plugin Tests:
+                requires:
+                    - Linting
+            - Node v12 Gatsby 1:
+                requires:
+                    - Node v12 Plugin Tests
+            - Node v12 Gatsby 2:
+                requires:
+                    - Node v12 Plugin Tests
+            - Node v12 Gatsby 3:
+                requires:
+                    - Node v12 Plugin Tests
+            - Node v14 Plugin Tests:
+                requires:
+                    - Linting
+            - Node v14 Gatsby 1:
+                requires:
+                    - Node v14 Plugin Tests
+            - Node v14 Gatsby 2:
+                requires:
+                    - Node v14 Plugin Tests
+            - Node v14 Gatsby 3:
+                requires:
+                    - Node v14 Plugin Tests
+            - Node v14_16 Plugin Tests:
+                requires:
+                    - Linting
+            - Node v14_16 Gatsby 1:
+                requires:
+                    - Node v14_16 Plugin Tests
+            - Node v14_16 Gatsby 2:
+                requires:
+                    - Node v14_16 Plugin Tests
+            - Node v14_16 Gatsby 3:
+                requires:
+                    - Node v14_16 Plugin Tests
+            - Node v15 Plugin Tests:
+                requires:
+                    - Linting
+            - Node v15 Gatsby 1:
+                requires:
+                    - Node v15 Plugin Tests
+            - Node v15 Gatsby 2:
+                requires:
+                    - Node v15 Plugin Tests
+            - Node v15 Gatsby 3:
+                requires:
+                    - Node v15 Plugin Tests
