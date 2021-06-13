@@ -1,4 +1,5 @@
 __tests__
+test-installs
 src
 .babelrc
 .eslintignore

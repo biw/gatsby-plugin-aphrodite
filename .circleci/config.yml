@@ -1,74 +1,176 @@
 version: 2.1
 
+orbs:
+    node: circleci/node@4.5
+
 commands:
     install_and_cache_yarn_linux:
         steps:
             - checkout
-            - restore_cache:
-                  name: restore cache ➡ root
-                  keys:
-                      - dependencies-linux-root-{{ checksum "yarn.lock" }}
-                      # fallback to using the latest cache if no exact match is found
-                      - dependencies-linux-root-
-            - run:
-                  name: yarn ➡ install
-                  command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
-            - save_cache:
-                  name: save cache
-                  key: dependencies-linux-root-{{ checksum "yarn.lock" }}
-                  paths:
-                      - ~/.cache/yarn
-    run_all_tests:
+            - node/install-packages:
+                  pkg-manager: yarn
+                  include-branch-in-cache-key: false
+            - run: rm /tmp/node-project-package.json
+            - run: rm /tmp/node-project-lockfile
+    build-plugin:
         steps:
-            - run:
-                  name: yarn test
-                  command: yarn test:ci
-    install_and_test:
+            - run: yarn build
+    run-plugin-tests:
         steps:
-            - install_and_cache_yarn_linux
-            - run_all_tests
+            - run: yarn test:ci
+    build-gatsby-2:
+        steps:
+            - node/install-packages:
+                  pkg-manager: yarn
+                  include-branch-in-cache-key: false
+                  cache-version: gatsby2
+                  app-dir: ~/project/test-installs/gatsby2
+            - run:
+                name: Build Gatsby 2.x.x
+                command: cd ~/project/test-installs/gatsby2 && yarn build
+    build-gatsby-3:
+        steps:
+            - node/install-packages:
+                  pkg-manager: yarn
+                  include-branch-in-cache-key: false
+                  cache-version: gatsby3
+                  app-dir: ~/project/test-installs/gatsby3
+            - run:
+                name: Build Gatsby 3.x.x
+                command: cd ~/project/test-installs/gatsby3 && yarn build
+
 
 # based on https://github.com/nodejs/Release schedule
 jobs:
-    Node v10:
-        docker:
-            - image: circleci/node:10
-        steps:
-            - install_and_test
-    Node v12:
+    Node v12 Plugin Tests:
         docker:
             - image: circleci/node:12
         steps:
-            - install_and_test
-    Node v14:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - run-plugin-tests
+    Node v12 Gatsby 2:
+        docker:
+            - image: circleci/node:12
+        steps:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - build-gatsby-2
+    Node v12 Gatsby 3:
+        docker:
+            - image: circleci/node:12
+        steps:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - build-gatsby-3
+    Node v14 Plugin Tests:
         docker:
             - image: circleci/node:14
         steps:
-            - install_and_test
-    Node v14_16:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - run-plugin-tests
+    Node v14 Gatsby 2:
+        docker:
+            - image: circleci/node:14
+        steps:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - build-gatsby-2
+    Node v14 Gatsby 3:
+        docker:
+            - image: circleci/node:14
+        steps:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - build-gatsby-3
+    Node v14_16 Plugin Tests:
         docker:
             - image: circleci/node:14.16.0
         steps:
-            - install_and_test
-    Node v15:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - run-plugin-tests
+    Node v14_16 Gatsby 2:
         docker:
-            - image: circleci/node:15
+            - image: circleci/node:14.16.0
         steps:
-            - install_and_test
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - build-gatsby-2
+    Node v14_16 Gatsby 3:
+        docker:
+            - image: circleci/node:14.16.0
+        steps:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - build-gatsby-3
+    Node v16 Plugin Tests:
+        docker:
+            - image: circleci/node:16
+        steps:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - run-plugin-tests
+    Node v16 Gatsby 2:
+        docker:
+            - image: circleci/node:16
+        steps:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - build-gatsby-2
+    Node v16 Gatsby 3:
+        docker:
+            - image: circleci/node:16
+        steps:
+            - install_and_cache_yarn_linux
+            - build-plugin
+            - build-gatsby-3
     Linting:
         docker:
             - image: circleci/node:14.16.0
         steps:
             - install_and_cache_yarn_linux
             - run:
-                  name: yarn lint
-                  command: CI=true yarn lint
+                name: yarn lint
+                command: yarn lint
 workflows:
     main:
         jobs:
             - Linting
-            - Node v10
-            - Node v12
-            - Node v14
-            - Node v14_16
-            - Node v15
+            - Node v12 Plugin Tests:
+                requires:
+                    - Linting
+            - Node v12 Gatsby 2:
+                requires:
+                    - Node v12 Plugin Tests
+            - Node v12 Gatsby 3:
+                requires:
+                    - Node v12 Plugin Tests
+            - Node v14 Plugin Tests:
+                requires:
+                    - Linting
+            - Node v14 Gatsby 2:
+                requires:
+                    - Node v14 Plugin Tests
+            - Node v14 Gatsby 3:
+                requires:
+                    - Node v14 Plugin Tests
+            - Node v14_16 Plugin Tests:
+                requires:
+                    - Linting
+            - Node v14_16 Gatsby 2:
+                requires:
+                    - Node v14_16 Plugin Tests
+            - Node v14_16 Gatsby 3:
+                requires:
+                    - Node v14_16 Plugin Tests
+            - Node v16 Plugin Tests:
+                requires:
+                    - Linting
+            - Node v16 Gatsby 2:
+                requires:
+                    - Node v16 Plugin Tests
+            - Node v16 Gatsby 3:
+                requires:
+                    - Node v16 Plugin Tests
