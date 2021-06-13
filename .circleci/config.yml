@@ -42,13 +42,6 @@ commands:
 
 # based on https://github.com/nodejs/Release schedule
 jobs:
-    Node v10 Plugin Tests:
-        docker:
-            - image: circleci/node:10
-        steps:
-            - install_and_cache_yarn_linux
-            - build-plugin
-            - run-plugin-tests
     Node v12 Plugin Tests:
         docker:
             - image: circleci/node:12
@@ -145,9 +138,6 @@ workflows:
     main:
         jobs:
             - Linting
-            - Node v10 Plugin Tests:
-                requires:
-                    - Linting
             - Node v12 Plugin Tests:
                 requires:
                     - Linting
