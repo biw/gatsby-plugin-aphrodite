@@ -17,7 +17,7 @@
   "main": "index.js",
   "peerDependencies": {
     "aphrodite": "^2.2.2",
-    "gatsby": "^1.9.273 || ^2.0.0 || ^3.0.0"
+    "gatsby": "^2.0.0 || ^3.0.0"
   },
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
