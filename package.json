@@ -31,23 +31,25 @@
     "reinstall": "rm -rf node_modules && yarn cache clean && yarn"
   },
   "dependencies": {
-    "@babel/runtime": "7.1.5"
+    "@babel/runtime": "7.14.5"
   },
   "devDependencies": {
-    "@babel/cli": "7.1.5",
-    "@babel/core": "7.1.6",
-    "@babel/node": "^7.0.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
-    "babel-eslint": "10.0.1",
+    "@babel/cli": "7.14.5",
+    "@babel/core": "7.14.5",
+    "@babel/eslint-parser": "^7.14.5",
+    "@babel/node": "^7.14.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "cross-env": "^5.1.4",
-    "eslint": "^5.9.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.11.1",
-    "prettier-eslint-cli": "^4.7.1"
+    "core-js": "3",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier-eslint-cli": "^5.0.1"
   }
 }
