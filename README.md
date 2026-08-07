@@ -1,9 +1,8 @@
 # gatsby-plugin-aphrodite
 
-[![Build Status][build-badge]][build]
-[![twitter][twitter-badge]][twitter]
-[![version][version-badge]][package]
-[![MIT License][license-badge]][license]
+[![CI](https://badgen.net/github/checks/biw/gatsby-plugin-aphrodite)](https://github.com/biw/gatsby-plugin-aphrodite/actions)
+[![npm version](https://badgen.net/npm/v/gatsby-plugin-aphrodite)](https://www.npmjs.com/package/gatsby-plugin-aphrodite)
+[![npm downloads](https://badgen.net/npm/dt/gatsby-plugin-aphrodite)](https://www.npmjs.com/package/gatsby-plugin-aphrodite)
 
 Provides drop-in support for [Aphrodite](https://github.com/Khan/aphrodite) in [Gatsby](https://github.com/gatsbyjs/gatsby).
 
@@ -45,13 +44,4 @@ export default SomeComponent
 
 ## LICENSE
 
-MIT © [Ben Williams](https://719ben.com)
-
-[build-badge]: https://github.com/biw/gatsby-plugin-aphrodite/actions/workflows/ci.yml/badge.svg?branch=main
-[build]: https://github.com/biw/gatsby-plugin-aphrodite/actions/workflows/ci.yml
-[version-badge]: https://img.shields.io/npm/v/gatsby-plugin-aphrodite.svg?style=flat-square
-[package]: https://www.npmjs.com/package/gatsby-plugin-aphrodite
-[license-badge]: https://img.shields.io/npm/l/gatsby-plugin-aphrodite.svg?style=flat-square
-[license]: https://github.com/biw/gatsby-plugin-aphrodite/blob/master/LICENSE
-[twitter-badge]: https://img.shields.io/twitter/follow/biwills.svg?style=flat-square&logo=twitter&label=Follow
-[twitter]: https://twitter.com/biwills
+MIT © [Ben Williams](https://github.com/biw)
