@@ -1,63 +1,51 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.replaceRenderer = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _server = require("react-dom/server");
-
-var _aphrodite = require("aphrodite");
-
-var _noImportant = require("aphrodite/no-important");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// we need this function because Gatsby 2's Webpack config splits bundles into
-// chunks by page and if there is `aphrodite` & `aphrodite/no-important` it
-// will otherwise fail since they are different objects exports and undefined
-// to each other
-var renderAphrodite = function renderAphrodite(bodyComponent) {
-  // if you are reading this and know a way to
-  // detect which one is used without falling back to errors
-  // please make a pull request!
-  try {
-    return _aphrodite.StyleSheetServer.renderStatic(function () {
-      return (0, _server.renderToString)(bodyComponent);
-    });
-  } catch (_) {
-    return _noImportant.StyleSheetServer.renderStatic(function () {
-      return (0, _server.renderToString)(bodyComponent);
-    });
-  }
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+//#region \0rolldown/runtime.js
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __copyProps = (to, from, except, desc) => {
+	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
+		key = keys[i];
+		if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+			get: ((k) => from[k]).bind(null, key),
+			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+		});
+	}
+	return to;
 };
-
-var replaceRenderer = function replaceRenderer(_ref) {
-  var bodyComponent = _ref.bodyComponent,
-      replaceBodyHTMLString = _ref.replaceBodyHTMLString,
-      setHeadComponents = _ref.setHeadComponents;
-
-  var _renderAphrodite = renderAphrodite(bodyComponent),
-      html = _renderAphrodite.html,
-      css = _renderAphrodite.css;
-
-  replaceBodyHTMLString(html);
-  setHeadComponents([_react.default.createElement("style", {
-    id: "aphrodite-styles",
-    key: "aphrodite-styles",
-    dangerouslySetInnerHTML: {
-      __html: css.content
-    }
-  }), _react.default.createElement("script", {
-    id: "aphrodite-ids",
-    key: "aphrodite-ids",
-    dangerouslySetInnerHTML: {
-      __html: `window.gatsbyAphrodite = ${JSON.stringify(css.renderedClassNames)}`
-    }
-  })]);
-}; // eslint-disable-next-line import/prefer-default-export
-
-
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp(target, "default", {
+	value: mod,
+	enumerable: true
+}) : target, mod));
+//#endregion
+let aphrodite = require("aphrodite");
+let react = require("react");
+react = __toESM(react);
+let react_dom_server = require("react-dom/server");
+let aphrodite_no_important = require("aphrodite/no-important");
+//#region src/gatsby-ssr.js
+const renderAphrodite = (bodyComponent) => {
+	try {
+		return aphrodite.StyleSheetServer.renderStatic(() => (0, react_dom_server.renderToString)(bodyComponent));
+	} catch {
+		return aphrodite_no_important.StyleSheetServer.renderStatic(() => (0, react_dom_server.renderToString)(bodyComponent));
+	}
+};
+const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
+	const { html, css } = renderAphrodite(bodyComponent);
+	replaceBodyHTMLString(html);
+	setHeadComponents([/* @__PURE__ */ react.default.createElement("style", {
+		id: "aphrodite-styles",
+		key: "aphrodite-styles",
+		dangerouslySetInnerHTML: { __html: css.content }
+	}), /* @__PURE__ */ react.default.createElement("script", {
+		id: "aphrodite-ids",
+		key: "aphrodite-ids",
+		dangerouslySetInnerHTML: { __html: `window.gatsbyAphrodite = ${JSON.stringify(css.renderedClassNames)}` }
+	})]);
+};
+//#endregion
 exports.replaceRenderer = replaceRenderer;
