@@ -13,7 +13,7 @@ const renderAphrodite = (bodyComponent) => {
   // please make a pull request!
   try {
     return StyleSheetServer.renderStatic(() => renderToString(bodyComponent))
-  } catch (_) {
+  } catch {
     return StyleSheetServerNoImportant.renderStatic(() => renderToString(bodyComponent))
   }
 }

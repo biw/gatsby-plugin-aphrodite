@@ -38,9 +38,7 @@ import { StyleSheet, css } from 'aphrodite'
 
 const styles = StyleSheet.create({ message: { color: 'red' } })
 
-const SomeComponent = () => (
-  <div className={css(styles.message)}>Hello World</div>
-)
+const SomeComponent = () => <div className={css(styles.message)}>Hello World</div>
 
 export default SomeComponent
 ```
@@ -49,8 +47,8 @@ export default SomeComponent
 
 MIT © [Ben Williams](https://719ben.com)
 
-[build-badge]: https://img.shields.io/circleci/build/github/biw/gatsby-plugin-aphrodite.svg?style=flat-square
-[build]: https://travis-ci.org/biw/gatsby-plugin-aphrodite
+[build-badge]: https://github.com/biw/gatsby-plugin-aphrodite/actions/workflows/ci.yml/badge.svg?branch=main
+[build]: https://github.com/biw/gatsby-plugin-aphrodite/actions/workflows/ci.yml
 [version-badge]: https://img.shields.io/npm/v/gatsby-plugin-aphrodite.svg?style=flat-square
 [package]: https://www.npmjs.com/package/gatsby-plugin-aphrodite
 [license-badge]: https://img.shields.io/npm/l/gatsby-plugin-aphrodite.svg?style=flat-square
